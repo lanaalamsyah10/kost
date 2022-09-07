@@ -14,8 +14,8 @@
                         <i class="fas fa-gem me-3"></i>Company name
                     </h6>
                     <p>
-                        Here you can use rows and columns to organize your footer content. Lorem ipsum
-                        dolor sit amet, consectetur adipisicing elit.
+                        KostJogja merupakan salah satu aplikasi pencari kos di Yogyakarta. Didirikan pada 23 Juli 2022,
+                        KostJogja terus berkembang dan berusaha menjadi penghubung bagi pemilik kos dan pencari kos.
                     </p>
                 </div>
                 <!-- Grid column -->
@@ -24,19 +24,13 @@
                 <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
                     <!-- Links -->
                     <h6 class="text-uppercase fw-bold mb-4">
-                        Products
+                        Kost Jogja
                     </h6>
                     <p>
-                        <a href="#!" class="text-reset">Angular</a>
+                        <a href="/about" class="text-reset">Tentang Kami</a>
                     </p>
                     <p>
-                        <a href="#!" class="text-reset">React</a>
-                    </p>
-                    <p>
-                        <a href="#!" class="text-reset">Vue</a>
-                    </p>
-                    <p>
-                        <a href="#!" class="text-reset">Laravel</a>
+                        <a href="#!" class="text-reset">Pusat Bantuan</a>
                     </p>
                 </div>
                 <!-- Grid column -->
@@ -65,11 +59,11 @@
                 <!-- Grid column -->
                 <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
                     <!-- Links -->
-                    <h6 class="text-uppercase fw-bold mb-4">Contact</h6>
-                    <a href="https://mail.google.com/mail/u/0/?hl=en#inbox" class="text-decoration-none text-reset">
+                    <h6 class="text-uppercase fw-bold mb-4">Hubungi Kami</h6>
+                    <a href="mailto:lanaalamsyah04@gmail.com" class="text-decoration-none text-reset">
                         <p><i class="bi bi-envelope"></i> kostjogja@gmail.com</p>
                     </a>
-                    <a href="" class="text-decoration-none text-reset">
+                    <a href="https://wa.me/+6289526396629" class="text-decoration-none text-reset">
                         <p><i class="bi bi-whatsapp"></i> 08983737383</p>
                     </a>
 
@@ -92,7 +86,7 @@
         <!-- Right -->
         <div>
             <a href="" class="me-2 text-decoration-none text-reset">
-                <i class="bi bi-whatsapp"></i>
+                <i class="bi bi-twitter"></i>
             </a>
             <a href="" class="me-2 text-decoration-none text-reset">
                 <i class="bi bi-instagram"></i>

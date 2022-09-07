@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Post;
+use App\Models\User;
 use App\Models\Admin;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 class SuperAdminController extends Controller
 {
@@ -16,7 +19,7 @@ class SuperAdminController extends Controller
      */
     public function index()
     {
-        $user = DB::table('users')->get();
+        $user = DB::table('users')->latest()->get();
         return view('dashboard.admin.index', [
             'users' => $user
         ]);
@@ -29,7 +32,9 @@ class SuperAdminController extends Controller
      */
     public function create()
     {
-        return @dd('ini');
+        return view('dashboard.admin.create', [
+            'admins' => Admin::get(),
+        ]);
     }
 
     /**
@@ -40,7 +45,21 @@ class SuperAdminController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $messages = array(
+            'required' => 'Kolom tidak boleh kosong',
+            'unique' => 'Data sudah digunakan',
+            'email' => 'Format bukan email'
+        );
+        $validated = $request->validate([
+            'name' => 'required',
+            'username' => 'required|unique:users,username',
+            'password' => 'required',
+            'email' => 'required|email|unique:users,email',
+            'is_admin' => 'required'
+        ], $messages);
+        $validated['password'] = Hash::make($request->password);
+        User::create($validated);
+        return redirect('/dashboard/admin')->with('success', 'Data berhasil ditambahkan');
     }
 
     /**
@@ -51,7 +70,8 @@ class SuperAdminController extends Controller
      */
     public function show(Admin $admin)
     {
-        return view('dashboard.admin.show');
+        $post = Post::with(['category', 'author'])->where('user_id', '=', $admin->id)->get();
+        return view('dashboard.admin.show', compact('admin', 'post'));
     }
 
     /**
@@ -62,7 +82,8 @@ class SuperAdminController extends Controller
      */
     public function edit(Admin $admin)
     {
-        return view('dashboard.admin.edit');
+        $admin = DB::table('users')->where('id', '=', $admin->id)->first();
+        return view('dashboard.admin.edit', compact('admin'));
     }
 
     /**
@@ -74,7 +95,23 @@ class SuperAdminController extends Controller
      */
     public function update(Request $request, Admin $admin)
     {
-        //
+        $user = User::findOrFail($admin->id);
+        $validated = $request->validate([
+            'password' => '',
+            'email' => 'required',
+            'name' => 'required',
+            'is_admin' => 'required'
+        ]);
+        if ($request->email == $user->email) {
+            $validated['email'] = $user->email;
+        }
+        if ($request->password == NULL) {
+            $validated['password'] = $user->password;
+        } else {
+            $validated['password'] = Hash::make($request->password);
+        }
+        $user->update($validated);
+        return redirect('/dashboard/admin')->with('sucUpdate', 'Data berhasil diubah');
     }
 
     /**

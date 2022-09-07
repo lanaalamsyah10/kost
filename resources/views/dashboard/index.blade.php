@@ -3,7 +3,7 @@
     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
         <h1 class="h2">Selamat datang {{ auth()->user()->name }}</h1>
     </div>
-    <img src="img/lg.png" alt="" style="width:220px;">
+    <img src="img/lg.png" alt="" style="width:200px;">
     <h4 class="fw-normal mt-4">KosJogja</h4>
     <p class="">Aplikasi Anak Kos Yogyakarta.
         🏡 Cari & pesan kamar kost impianmu di KostJogja pakai Booking Langsung

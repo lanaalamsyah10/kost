@@ -29,7 +29,7 @@
 
     {{-- main Style --}}
     <link rel="stylesheet" href="/css/style.css">
-
+    @include ('partials.sidebar')
     @include('partials.footer')
     <title>{{ $title }}</title>
 </body>

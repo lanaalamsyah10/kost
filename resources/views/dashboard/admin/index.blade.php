@@ -6,9 +6,28 @@
             <a href="/dashboard/admin/create" class="btn btn-success mb-4 "> Tambah <span data-feather="plus"></span></a>
         </div>
 
-        @if (session()->has('success'))
-            <div class="alert alert-success col-lg-8" role="alert">
-                {{ session('success') }}
+        @if ($message = session()->get('success'))
+            <script>
+                const Toast = Swal.mixin({
+                    toast: true,
+                    position: 'top-end',
+                    showConfirmButton: false,
+                    timer: 3000,
+                    timerProgressBar: true,
+                    didOpen: (toast) => {
+                        toast.addEventListener('mouseenter', Swal.stopTimer)
+                        toast.addEventListener('mouseleave', Swal.resumeTimer)
+                    }
+                })
+
+                Toast.fire({
+                    icon: 'success',
+                    title: 'Data berhasil ditambahkan'
+                })
+            </script>
+        @elseif($message = session()->get('sucUpdate'))
+            <div class="alert alert-success col-12" role="alert">
+                {{ $message }}
             </div>
         @endif
 
@@ -23,7 +42,7 @@
                                 <th>Username</th>
                                 <th>Email</th>
                                 <th>Role</th>
-                                <th>Action</th>
+                                <th>Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -43,12 +62,12 @@
                                         @endif
                                     </td>
                                     <td>
-                                        <a href="/dashboard/admin/{{ $user->is_admin }}" class="badge bg-info"><span
+                                        <a href="{{ route('admin.show', $user->id) }}" class="badge bg-info"><span
                                                 data-feather="eye"></span></a>
-                                        <a href="/dashboard/admin/{{ $user->is_admin }}/edit" class="badge bg-warning"><span
+                                        <a href="{{ route('admin.edit', $user->id) }}" class="badge bg-warning"><span
                                                 data-feather="edit"></span></a>
 
-                                        <form action="/dashboard/admin/{{ $user->is_admin }}" method="post"
+                                        <form action="{{ route('admin.destroy', $user->id) }}" method="post"
                                             class="d-inline">
                                             @method('delete')
                                             @csrf

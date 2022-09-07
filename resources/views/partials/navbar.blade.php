@@ -1,7 +1,7 @@
 {{-- TAMPILAN NAV --}}
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
     <a class="navbar-brand" href="/">
-        <img src="{{ asset('img/lg.png') }} " alt="logo" style="width:70px;">
+        <img src="{{ asset('img/navbar1.png') }} " alt="logo" style="width:120px;">
     </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav"
         aria-expanded="false" aria-label="Toggle navigation">
@@ -14,14 +14,15 @@
                     <a class="nav-link {{ Request::is('/') ? 'active' : '' }}" href="/">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link {{ request()->segment(1) == 'about' ? 'active' : '' }}" href="/about">About</a>
+                    <a class="nav-link {{ request()->segment(1) == 'about' ? 'active' : '' }}" href="/about">Tentang
+                        Kami</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link {{ request()->segment(1) == 'posts' ? 'active' : '' }}" href="/posts">Kost</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link {{ request()->segment(1) == 'categories' ? 'active' : '' }}"
-                        href="/categories">Categories</a>
+                        href="/categories">Area</a>
                 </li>
             </ul>
 
@@ -31,7 +32,7 @@
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                                 aria-expanded="false">
-                                Welcome back, {{ auth()->user()->name }}
+                                Selamat datang, {{ auth()->user()->name }}
                             </a>
                             <ul class="dropdown-menu">
                                 @can('super_admin')
@@ -55,24 +56,22 @@
                                         <button type="submit" class="dropdown-item"><i class="bi bi-box-arrow-right"></i>
                                             logout</button>
                                     </form>
+                                </li>
                             </ul>
                         </li>
                     @else
                         @if (!auth()->check())
                             @if (!Request::is('login'))
-                                <li class="navbar">
-                                    <a href="#" class="nav-link btn btn-outline active"
-                                        style="background-color: goldenrod" data-bs-toggle="modal"
-                                        data-bs-target="#exampleModal"
-                                        {{ request()->segment(1) == 'login' ? 'active' : '' }}>Masuk
-                                    </a>
+                                <li class="nav-item">
+                                    <a class="btn btn-outline-primary active"
+                                        {{ request()->segment(1) == 'categories' ? 'active' : '' }} href="/login">Masuk</a>
                                 </li>
                             @endif
                         @else
                             <a href="/login">Login</a>
                         @endif
                         <!-- Modal -->
-                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                        {{-- <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
                             aria-hidden="true">
                             <div class="modal-dialog">
                                 <div class="modal-content">
@@ -102,7 +101,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
                     </ul>
                 </div>
             @endauth

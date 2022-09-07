@@ -19,8 +19,8 @@
                         <thead>
                             <tr>
                                 <th>No</th>
-                                <th>Name Category</th>
-                                <th>Action</th>
+                                <th>Kategori</th>
+                                <th>Aksi</th>
                             </tr>
                         </thead>
                         <tbody>

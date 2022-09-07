@@ -18,7 +18,7 @@ class AdminCategoryController extends Controller
     public function index()
     {
         return view('dashboard.categories.index', [
-            'categories' => Category::all()
+            'categories' => Category::latest()->get()
         ]);
     }
 
@@ -30,7 +30,7 @@ class AdminCategoryController extends Controller
     public function create()
     {
         return view('dashboard.categories.create', [
-            'categories' => Category::all(),
+            'categories' => Category::get(),
         ]);
     }
 

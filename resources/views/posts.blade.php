@@ -73,13 +73,13 @@
                                 <h5 class="card-title">{{ $post->title }}</h5>
                                 <p>
                                     <small class="text-muted">
-                                        By. <a href="/posts?author={{ $post->author->username }}"
+                                        Pemilik Kost <a href="/posts?author={{ $post->author->username }}"
                                             class="text-decoration-none">
                                             {{ $post->author->name }}</a> {{ $post->created_at->diffForHumans() }}
                                     </small>
                                 </p>
                                 <p class="card-text">{{ Str::limit(strip_tags($post->excerpt), 70) }}</p>
-                                <a href="/posts/{{ $post->slug }}" class="btn btn-primary">Readmore</a>
+                                <a href="/posts/{{ $post->slug }}" class="btn btn-primary">Detail</a>
                             </div>
                         </div>
                     </div>
@@ -87,7 +87,7 @@
             </div>
         </div>
     @else
-        <p class="text-center fs-4">Postingane kok ilang </p>
+        <p class="text-center fs-4">Tidak Ada Postingan!! </p>
     @endif
 
     <div class="d-flex justify-content-end">

@@ -1,7 +1,7 @@
 @extends('layouts.main')
 
 @section('container')
-    <h1 class="mb-5"> Post Categories</h1>
+    <h3 class="mb-5"> Area Kost Jogja</h3>
 
     <div class="container">
         <div class="row">
@@ -15,24 +15,6 @@
                                 <h5 class="card-title text-center flex-fill p-3 fs-3"
                                     style="background-color:rgba(0,0,0,0.5)">
                                     {{ $category->name }}</h5>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-            @endforeach
-        </div>
-    </div>
-
-    <h4>populer</h4>
-    <div class="card-container">
-        <div class="row">
-            @foreach ($categories as $category)
-                <div class="col-md-3">
-                    <a href="/posts?category={{ $category->slug }}">
-                        <div class="card bg-dark p-0 text-white mb-4">
-                            <img src="/img/house.jpg? {{ $category->name }}" class="card-img" alt="{{ $category->name }}">
-                            <div class="card-img-overlay d-flex align-items-center  p-0">
-                                <h5 class="card-title text-center flex-fill ">{{ $category->name }}</h5>
                             </div>
                         </div>
                     </a>

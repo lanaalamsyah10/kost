@@ -8,13 +8,12 @@
 
     <div class="col-lg-8">
 
-        <form method="post" action="{{ route('admin.update', $admin->id) }}" class="mb-5" enctype="multipart/form-data">
-            @method('put')
+        <form method="post" action="/dashboard/admin" class="mb-5" enctype="multipart/form-data">
             @csrf
             <div class="mb-3">
                 <label for="name" class="form-label">Nama</label>
                 <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" name="name"
-                    autofocus value="{{ old('name', $admin->name) }}">
+                    autofocus value="{{ old('name') }}">
                 @error('name')
                     <div class="invalid-feedback">
                         {{ $message }}
@@ -24,7 +23,7 @@
             <div class="mb-3">
                 <label for="username" class="form-label">Username</label>
                 <input type="text" class="form-control @error('username') is-invalid @enderror" id="username"
-                    name="username" value="{{ old('username', $admin->username) }}">
+                    name="username" value="{{ old('username') }}">
                 @error('username')
                     <div class="invalid-feedback">
                         {{ $message }}
@@ -34,7 +33,7 @@
             <div class="mb-3">
                 <label for="email" class="form-label">Email</label>
                 <input type="email" class="form-control @error('email') is-invalid @enderror" id="email"
-                    name="email" value="{{ old('email', $admin->email) }}">
+                    name="email" value="{{ old('email') }}">
                 @error('email')
                     <div class="invalid-feedback">
                         {{ $message }}
@@ -54,19 +53,12 @@
             <div class="mb-3">
                 <label for="category" class="form-label">Role</label>
                 <select class="form-select" name="is_admin">
-                    @if ($admin->is_admin === 0)
-                        <option value="0" selected>User Biasa</option>
-                    @elseif($admin->is_admin === 2)
-                        <option value="2" selected>Admin</option>
-                    @elseif($admin->is_admin === 1)
-                        <option value="1" selected>Super Admin</option>
-                    @endif
                     <option value="0">User Biasa</option>
                     <option value="2">Admin</option>
                     <option value="1">Super Admin</option>
                 </select>
             </div>
-            <button type="submit" class="btn btn-primary">Update </button>
+            <button type="submit" class="btn btn-primary">Tambahkan</button>
         </form>
     </div>
 

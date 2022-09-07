@@ -102,7 +102,6 @@ Route::resource('/dashboard/posts', DashboardPostController::class)
 
 Route::resource('/dashboard/categories', AdminCategoryController::class)
     ->middleware('admin');
-Route::resource('/dashboard/admin', SuperAdminController::class)
-    ->middleware('auth');
+Route::resource('/dashboard/admin', SuperAdminController::class)->middleware('auth');
 
 Route::get('/maps', [GoogleController::class, 'index'])->name('index');
