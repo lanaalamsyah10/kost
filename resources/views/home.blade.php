@@ -1,6 +1,55 @@
 @extends('layouts.main')
 
 @section('container')
+    <!-- ======= Hero Section ======= -->
+    <section id="hero" class="d-flex align-items-center">
+        <div class="container" data-aos="zoom-out" data-aos-delay="100">
+            <h1>Selamat Datang Di <img src="{{ asset('img/bg.png') }} " alt="logo" style="width:250px;"></h1>
+            <h3>KosJogja
+                Aplikasi Anak Kos Yogyakarta. 🏡 Cari & pesan kamar kost impianmu di KostJogja pakai Booking Langsung 📱
+                Cari akomodasi berkualitas, harga terjangkau dengan Singgahsini yang dapat disewa secara harian maupun
+                bulanan</h3>
+            <div class="d-flex">
+
+                @if (!auth()->check())
+                    @if (!Request::is('login'))
+                        <a href="/login" class="btn btn-outline-primary active" data-bs-toggle="modal"
+                            data-bs-target="#exampleModal">Login Now</a>
+                    @endif
+                @endif
+            </div>
+        </div>
+    </section><!-- End Hero -->
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <p class="card-title h4 my-4 ">Masuk Ke KostJogja</p>
+                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                </div>
+
+                <div class="card-body">
+                    <div class="modal-body">
+                        <p><a class="dropdown-item " href="/login">
+                                <img src="{{ asset('img/pck.svg') }}" alt="" style="width:70px;">
+                                Pencari Kost
+                            </a></p>
+                        <hr class="dropdown-divider">
+                    </div>
+                    <div class="modal-body">
+                        <p><a class="dropdown-item " href="/login/pemilik">
+                                <img src="{{ asset('img/pmk.svg') }}" alt="" style="width:70px;">
+                                Pemilik Kost
+                            </a></p>
+                        <hr class="dropdown-divider">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- ======= Team Section ======= -->
     <section id="team" class="team section-bg">
         <div class="container" data-aos="fade-up">
@@ -131,10 +180,14 @@
 
             <div class="row" data-aos="fade-up" data-aos-delay="100">
 
-                <div class="col-lg-6 ">
-                    <iframe class="mb-4 mb-lg-0"
-                        src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12097.433213460943!2d-74.0062269!3d40.7101282!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xb89d1fe6bc499443!2sDowntown+Conference+Center!5e0!3m2!1smk!2sbg!4v1539943755621"
-                        frameborder="0" style="border:0; width: 100%; height: 384px;" allowfullscreen></iframe>
+                <div class="col-lg-6">
+                    <iframe width="520" height="400" frameborder="0" scrolling="no" marginheight="0"
+                        marginwidth="0" id="gmap_canvas"
+                        src="https://maps.google.com/maps?width=520&amp;height=400&amp;hl=en&amp;q=%20Yogyakarta+()&amp;t=&amp;z=12&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"></iframe>
+                    <a href='https://www.acadoo.de/'>Dissertation schreiben lassen</a>
+                    <script type='text/javascript'
+                        src='https://embedmaps.com/google-maps-authorization/script.js?id=a91327b40c3bd56152a11fafe75f0f2cf8ab2c62'>
+                    </script>
                 </div>
 
                 <div class="col-lg-6">

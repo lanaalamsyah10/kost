@@ -101,7 +101,7 @@
     <!-- Section: Social media -->
 
     <!-- Copyright -->
-    <div class="text-center text-white-50 bg-dark p-4">
+    <div class="text-center text-white-50 p-4" style="background-color: black">
         © Copyright KosJogja 2022
     </div>
     <!-- Copyright -->

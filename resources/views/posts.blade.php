@@ -1,25 +1,6 @@
 @extends('layouts.main')
 {{-- {{ $title }} --}}
 @section('container')
-    <h1 class=" text-end">Mau nyari kost?</h1>
-    <h4 class="section-subheading font-weight-normal mb-4">Dapatkan infonya dan langsung sewa di KostJogja.</h4>
-    <div class="row justify-content-start mb-5">
-        <div class="col-md-6">
-            <form action="/posts">
-                @if (request('category'))
-                    <input type="hidden" name="category" value="{{ request('category') }}">
-                @endif
-                @if (request('author'))
-                    <input type="hidden" name="author" value="{{ request('author') }}">
-                @endif
-                <div class="input-group mb-3">
-                    <input type="text" class="form-control" placeholder="Search.." name="search"
-                        value="{{ request('search') }}">
-                    <button class="btn btn-primary rounded-right" type="submit">Search</button>
-                </div>
-            </form>
-        </div>
-    </div>
 
     @if ($posts->count())
         {{-- <div class="card mb-3 mt-4">
@@ -49,41 +30,64 @@
                 <a href="/posts/{{ $posts[0]->slug }}"class="text-decoration-none btn btn-primary ">Readmore</a>
             </div>
         </div> --}}
-
-        <div class="container">
-            <div class="row">
-
-                @foreach ($posts as $post)
-                    <div class="col-md-4 mb-3">
-                        <div class="card">
-                            <div class="position-absolute px-3 py-2 text-white" style="background-color: rgba(0,0,0,0.7)">
-                                <a href="/posts? category={{ $post->category->slug }}"
-                                    class="text-white text-decoration-none">{{ $post->category->name }}</a>
-                            </div>
-
-                            @if ($post->image)
-                                <img src="{{ asset('storage/' . $post->image) }}" alt="{{ $post->category->name }}"
-                                    class="img-fluid ">
-                            @else
-                                <img src="/img/house.jpg? {{ $post->category->name }}" class="card-img-top"
-                                    alt="{{ $post->category->name }}">
+        <div id="posts">
+            <div class="container mt-5">
+                <h1 class=" text-end">Mau nyari kost?</h1>
+                <h4 class="section-subheading font-weight-normal mb-4">Dapatkan infonya dan langsung sewa di KostJogja.</h4>
+                <div class="row justify-content-start mb-5">
+                    <div class="col-md-6">
+                        <form action="/posts">
+                            @if (request('category'))
+                                <input type="hidden" name="category" value="{{ request('category') }}">
                             @endif
+                            @if (request('author'))
+                                <input type="hidden" name="author" value="{{ request('author') }}">
+                            @endif
+                            <div class="input-group mb-3">
+                                <input type="text" class="form-control" placeholder="Search.." name="search"
+                                    value="{{ request('search') }}">
+                                <button class="btn btn-primary rounded-right" type="submit">Search</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
 
-                            <div class="card-body">
-                                <h5 class="card-title">{{ $post->title }}</h5>
-                                <p>
-                                    <small class="text-muted">
-                                        Pemilik Kost <a href="/posts?author={{ $post->author->username }}"
-                                            class="text-decoration-none">
-                                            {{ $post->author->name }}</a> {{ $post->created_at->diffForHumans() }}
-                                    </small>
-                                </p>
-                                <p class="card-text">{{ Str::limit(strip_tags($post->excerpt), 70) }}</p>
-                                <a href="/posts/{{ $post->slug }}" class="btn btn-primary">Detail</a>
+                <div class="row">
+
+                    @foreach ($posts as $post)
+                        <div class="col-md-4 mb-3">
+                            <div class="card">
+                                <div class="position-absolute px-3 py-2 text-white"
+                                    style="background-color: rgba(0,0,0,0.7)">
+                                    <a href="/posts? category={{ $post->category->slug }}"
+                                        class="text-white text-decoration-none">{{ $post->category->name }}</a>
+                                </div>
+
+                                @if ($post->image)
+                                    <img src="{{ asset('storage/' . $post->image) }}" alt="{{ $post->category->name }}"
+                                        class="img-fluid ">
+                                @else
+                                    <img src="/img/house.jpg? {{ $post->category->name }}" class="card-img-top"
+                                        alt="{{ $post->category->name }}">
+                                @endif
+
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ $post->title }}</h5>
+                                    <p>
+                                        <small class="text-muted">
+                                            Pemilik Kost <a href="/posts?author={{ $post->author->username }}"
+                                                class="text-decoration-none">
+                                                {{ $post->author->name }}</a> {{ $post->created_at->diffForHumans() }}
+                                        </small>
+                                    </p>
+                                    <p class="card-text">{{ Str::limit(strip_tags($post->excerpt), 70) }}</p>
+                                    <a href="/posts/{{ $post->slug }}" class="btn btn-primary">Detail <i
+                                            class="bi bi-chevron-right"></i></a>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                @endforeach
+                    @endforeach
+                </div>
             </div>
         </div>
     @else

@@ -1,86 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Peta Dasar Leaflet Js</title>
-
-    <style>
-        #peta {
-            height: 680px;
-        }
-    </style>
-
-    <!-- css leaflfet -->
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
-        integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
-        crossorigin="" />
-
-    <!-- leafletjs -->
-    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
-        integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
-        crossorigin=""></script>
-    <script src="geosearch/src/js/l.control.geosearch.js"></script>
-    <script src="geosearch/src/js/l.geosearch.provider.google.js"></script>
-
-    <!-- leaflet search -->
-    <link rel="stylesheet" href="geosearch/src/css/l.geosearch.css" />
-    <link rel="stylesheet" href="https://unpkg.com/leaflet-geosearch@3.0.0/dist/geosearch.css">
-    <script src="https://unpkg.com/leaflet-geosearch@3.1.0/dist/geosearch.umd.js"></script>
-
-
-</head>
-
-<body>
-    <div id="peta"></div>
-
-    <script>
-        // you want to get it of the window global
-        const providerOSM = new GeoSearch.OpenStreetMapProvider();
-
-        //leaflet map
-        var leafletMap = L.map('peta', {
-            fullscreenControl: true,
-
-            // OR
-            fullscreenControl: {
-                pseudoFullscreen: false // if true, fullscreen to page width and height
-            },
-            minZoom: 2
-        }).setView([0, 0], 2);
-
-        L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {
-            attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/#map=13/-7.8100/110.3932">OpenStreetMap</a> contributors,  <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>',
-            accessToken: 'your.mapbox.access.token'
-        }).addTo(leafletMap);
-
-        let theMarker = {};
-
-        leafletMap.on('click', function(e) {
-            let latitude = e.latlng.lat.toString().substring(0, 15);
-            let longitude = e.latlng.lng.toString().substring(0, 15);
-            // document.getElementById("latitude").value = latitude;
-            // document.getElementById("longitude").value = longitude;
-            let popup = L.popup()
-                .setLatLng([latitude, longitude])
-                .setContent("Kordinat : " + latitude + " - " + longitude)
-                .openOn(leafletMap);
-
-            if (theMarker != undefined) {
-                leafletMap.removeLayer(theMarker);
-            };
-            theMarker = L.marker([latitude, longitude]).addTo(leafletMap);
-        });
-
-        const search = new GeoSearch.GeoSearchControl({
-            provider: providerOSM,
-            style: 'icon',
-            searchLabel: 'Klik Pencarian Lokasi',
-        });
-        leafletMap.addControl(search);
-    </script>
-</body>
-
-</html>
+<div id="lokasi">
+    <div class="container">
+        <div class="row text-center">
+            <div class="col-md-12">
+                <h1>lokasi</h1>
+            </div>
+            <div class="col-md-12 my-4">
+                <iframe class="lokasi" width="520" height="400" frameborder="0" scrolling="no" marginheight="0"
+                    marginwidth="0" id="gmap_canvas"
+                    src="https://maps.google.com/maps?width=520&amp;height=400&amp;hl=en&amp;q=%20Yogyakarta+()&amp;t=&amp;z=12&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"></iframe>
+                <a href='https://www.acadoo.de/'>Dissertation schreiben lassen</a>
+                <script type='text/javascript'
+                    src='https://embedmaps.com/google-maps-authorization/script.js?id=a91327b40c3bd56152a11fafe75f0f2cf8ab2c62'>
+                </script>
+            </div>
+        </div>
+    </div>
+</div>

@@ -10,6 +10,7 @@
         integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
 
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="shortcut icon" href="{{ asset('img/logo.png') }}">
     <link rel="stylesheet" href="{{ asset('css/sweetalert2.min.css') }}">
     <!-- Custom styles for this template -->
     <link href="/css/dashboard.css" rel="stylesheet">

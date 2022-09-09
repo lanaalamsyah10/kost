@@ -1,7 +1,7 @@
 @extends('layouts.main')
 
 @section('container')
-    <div id="hero">
+    <div id="about">
         <div class="container">
             <div class="row align-items-center text-center">
                 <div class="col-md-6">
@@ -20,7 +20,7 @@
             </div>
         </div>
     </div>
-    <div id="hero">
+    <div id="about">
         <div class="container">
             <div class="row align-items-center text-center">
                 <div class="col-md-6">
@@ -39,7 +39,7 @@
             </div>
         </div>
     </div>
-    <div id="hero">
+    <div id="about">
         <div class="container">
             <div class="row align-items-center text-center">
                 <div class="col-md-6">

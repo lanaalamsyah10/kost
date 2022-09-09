@@ -2,12 +2,12 @@ body{
     background-color: #ffffff;
 }
 
-#hero{
+#about{
     margin-top: 100px;
    
    
 }
-#heero p{
+#about p{
     font-size: 20px;
     padding-top: 10px;
    font-family: 'Roboto', sans-serif;
@@ -49,7 +49,13 @@ margin-bottom: -1px;
 .inner:hover img{
   transform: scale(1.5);
 }
-.card{
+#categories .card{
+  background: white;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  transition: 0.5s ease;
+  cursor: pointer; 
+}
+#posts .card{
   background: white;
   transition: 0.5s ease;
   cursor: pointer; 
@@ -59,15 +65,25 @@ margin-bottom: -1px;
   top: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.1);
 }
 
-.card:hover{
+#categories .card:hover{
   transform: scale(1.1);
-
+}
+#posts .card:hover{
+  transform: scale(1.1);
+}
+.detail .card{
+  transition: none;
+  cursor: none;
 }
 
-
+#lokasi{
+  margin-top: 100px;
+}
+#lokasi iframe{
+  width: 100%;
+}
 
 /* Team */
 .team {
@@ -136,4 +152,105 @@ margin-bottom: -1px;
 .team .member:hover .social {
   opacity: 1;
   bottom: 15px;
+}
+
+/* #HERO */
+#hero {
+  width: 100%;
+  height: 95vh;
+  background: url("../img/hero-bg.jpg") top left;
+  background-size: cover;
+  position: relative;
+}
+#hero:before {
+  content: "";
+  background: rgba(0, 0, 0, 0.295);
+  position: absolute;
+  bottom: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+#hero .container {
+  position: relative;
+}
+#hero h1 {
+  margin: 0;
+  font-size: 48px;
+  font-weight: 600;
+  line-height: 56px;
+  color: #ffffff;
+  font-family: "Poppins", sans-serif;
+}
+
+#hero h3 {
+  color: #bdbdbd;
+  margin: 1px 0 30px 0;
+  font-size: 24px;
+  font-weight: 400;
+}
+#hero .btn-get-started {
+  font-family: "Roboto", sans-serif;
+  text-transform: uppercase;
+  font-weight: 500;
+  font-size: 14px;
+  letter-spacing: 1px;
+  display: inline-block;
+  padding: 10px 28px;
+  border-radius: 4px;
+  transition: 0.5s;
+  color: #fff;
+  background: #000000;
+}
+#hero .btn-get-started:hover {
+  background: #000000d3;
+}
+#hero .btn-watch-video {
+  font-size: 16px;
+  transition: 0.5s;
+  margin-left: 25px;
+  color: #222222;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+}
+#hero .btn-watch-video i {
+  color: #fdfdfd;
+  font-size: 32px;
+  transition: 0.3s;
+  line-height: 0;
+  margin-right: 8px;
+}
+#hero .btn-watch-video:hover {
+  color: #ffffff;
+}
+#hero .btn-watch-video:hover i {
+  color: #000000;
+}
+@media (min-width: 1024px) {
+  #hero {
+    background-attachment: fixed;
+  }
+}
+@media (max-width: 768px) {
+  #hero {
+    height: 100vh;
+  }
+  #hero h1 {
+    font-size: 28px;
+    line-height: 36px;
+  }
+  #hero h2 {
+    font-size: 18px;
+    line-height: 24px;
+    margin-bottom: 30px;
+  }
+  #hero .btn-get-started, #hero .btn-watch-video {
+    font-size: 13px;
+  }
+}
+@media (max-height: 500px) {
+  #hero {
+    height: 120vh;
+  }
 }

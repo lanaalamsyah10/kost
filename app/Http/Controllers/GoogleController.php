@@ -9,6 +9,6 @@ class GoogleController extends Controller
     public function index()
     {
 
-        @dd('ini');
+        return view('maps');
     }
 }
